@@ -71,7 +71,7 @@ const Services = () => {
       >
         {content.map((item) => {
           return (
-            <SwiperSlide>
+            <SwiperSlide key={item.title}>
               <li className='w-[300px] m-auto h-[400px] flex items-center justify-center flex-col text-center space-y-4'>
                 <Image
                   src={item.src}

@@ -9,8 +9,9 @@ export default function Cover() {
             FULL STACK WEB & MOBILE APP DEVELOPMENT
           </h1>
           <h2 className='sm:text-lg text-md'>
-            Specializing in custom app development. If you're a business seeking
-            a web presence or are looking to hire a firm, contact us here.
+            Specializing in custom app development. If you`&apos;`re a business
+            seeking a web presence or are looking to hire a firm, contact us
+            here.
           </h2>
           <Link href={'#portfolio'}>
             <button className='px-4 py-3 rounded-xl transition-all hover:rounded-none ease-in-out duration-300 delay-100 bg-yellow-600'>
