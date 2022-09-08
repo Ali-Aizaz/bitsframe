@@ -1,7 +1,7 @@
 import Image from 'next/image';
 const Portfolio = () => {
   return (
-    <section className='Portfolio '>
+    <section className='Portfolio ' id='portfolio'>
       <div className='border-t w-full border-gray-300' />
       <h1 className='w-full tracking-[1em] relative top-10 text-center text-lg text-gray-400 font-semibold'>
         PORTFOLIO

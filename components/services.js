@@ -45,7 +45,7 @@ const content = [
 
 const Services = () => {
   return (
-    <section>
+    <section id='services'>
       <Swiper
         slidesPerView={'auto'}
         spaceBetween={30}

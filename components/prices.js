@@ -1,6 +1,9 @@
 const Price = () => {
   return (
-    <section className='Price  bg-gray-500 min-h-[100vh] relative top-20 space-y-20'>
+    <section
+      id='prices'
+      className='Price  bg-gray-500 min-h-[100vh] relative top-20 space-y-20'
+    >
       <h1 className='text-lg tracking-widest relative top-20 text-white w-full text-center  font-semibold'>
         PRICE PER BUILD
       </h1>
@@ -37,7 +40,7 @@ const Price = () => {
             Request quote
           </button>
         </div>
-        <div className='w-[330px] h-[660px] mt-20 mx-5 rounded-xl shadow-xl items-center flex flex-col bg-white transition-all hover:-translate-y-2 ease-in-out duration-500'>
+        <div className='w-[330px] mb-10 h-[660px] mt-20 mx-5 rounded-xl shadow-xl items-center flex flex-col bg-white transition-all hover:-translate-y-2 ease-in-out duration-500'>
           <h2 className='text-md text-center py-4 font-bold text-white bg-amber-400 w-full rounded-t-xl'>
             PREMIUM
           </h2>
