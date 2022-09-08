@@ -7,10 +7,7 @@ const Mail = () => {
       <form className='relative top-20 md:w-[600px] w-[300px] items-center flex flex-col justify-center space-y-4 '>
         <div className='flex md:flex-row flex-col space-y-2 w-full space-x-2'>
           <div className='md:w-1/2 w-full'>
-            <label
-              for='countries'
-              class='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400'
-            >
+            <label className='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400'>
               EMAIL
             </label>
             <input
@@ -20,10 +17,7 @@ const Mail = () => {
             />
           </div>
           <div className='md:w-1/2 w-full'>
-            <label
-              for='countries'
-              class='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400'
-            >
+            <label className='block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400'>
               PLAN
             </label>
             <select
