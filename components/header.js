@@ -17,6 +17,9 @@ export default function Header() {
           <li>
             <Link href={'#prices'}>PRICING</Link>
           </li>
+          <li>
+            <Link href={'/blogs'}>BLOGS</Link>
+          </li>
         </ul>
         <div className='flex flex-col md:hidden'>
           <button
@@ -46,6 +49,9 @@ export default function Header() {
         </li>
         <li>
           <Link href={'#prices'}>PRICING</Link>
+        </li>
+        <li>
+          <Link href={'/blogs'}>BLOGS</Link>
         </li>
       </ul>
     </>

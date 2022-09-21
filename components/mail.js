@@ -25,10 +25,11 @@ const Mail = () => {
             </label>
             <select
               id='countries'
+              defaultValue={'DEFAULT'}
               required
               className=' p-2.5 rounded-lg h-11 border-gray-300 focus:border-2 w-full border transition-all ease-in-out duration-300 focus:outline-none focus:border-yellow-300'
             >
-              <option className='text-gray-400' selected>
+              <option value={'DEFAULT'} className='text-gray-400'>
                 CHOOSE A PLAN
               </option>
               <option value='1'>BASIC</option>

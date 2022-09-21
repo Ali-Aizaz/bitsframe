@@ -1,16 +1,21 @@
-import Header from '../components/header';
 import Cover from '../components/cover';
 import Services from '../components/services';
 import Portfolio from '../components/portfolio';
 import Price from '../components/prices';
 import Mail from '../components/mail';
-export default function Home() {
+import { getPortfolio } from './api/hello';
+
+export async function getServerSideProps() {
+  const data = await getPortfolio();
+  return { props: { data } };
+}
+
+export default function Home({ data }) {
   return (
     <main>
-      <Header />
       <Cover />
       <Services />
-      <Portfolio />
+      <Portfolio props={data} />
       <Price />
       <Mail />
     </main>
