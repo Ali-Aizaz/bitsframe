@@ -1,7 +1,7 @@
 import Card from '../../components/card';
 import Tabs from './tabs';
 import { getBlogs, getGenres } from '../api/hello';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 export async function getServerSideProps() {
   const genres = Object.keys(await getGenres());
   const blogs = await getBlogs(genres[0]);

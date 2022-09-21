@@ -1,4 +1,5 @@
 import { getBlogs } from '../api/hello';
+import { toast } from 'react-hot-toast';
 
 const Tabs = ({ genres, selectedTab, setSelectedTab, setBlogsList }) => {
   const tabs = genres;
@@ -6,7 +7,14 @@ const Tabs = ({ genres, selectedTab, setSelectedTab, setBlogsList }) => {
   const handleGetBlogs = async (tab) => {
     if (tab !== selectedTab) {
       setSelectedTab(tab);
-      setBlogsList(await getBlogs(tab));
+      const blogs = getBlogs(tab);
+
+      toast.promise(blogs, {
+        loading: 'Loading...',
+        success: 'Success',
+        error: 'Error',
+      });
+      setBlogsList(await blogs);
     }
   };
   return (
