@@ -11,7 +11,6 @@ export async function getServerSideProps() {
 const Blogs = ({ genres, blogs }) => {
   const [selectedTab, setSelectedTab] = useState(genres[0]);
   const [blogsList, setBlogsList] = useState(blogs);
-
   return (
     <div className='flex flex-col items-center space-y-10'>
       <Tabs

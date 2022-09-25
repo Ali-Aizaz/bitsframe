@@ -36,7 +36,15 @@ export const getBlogs = async (genre) => {
   const blogsSnap = await getDocs(blogsQueryRef);
   let data = [];
   blogsSnap.forEach((doc) => {
-    data.push(doc.data());
+    let blog = doc.data();
+    blog['id'] = doc.id;
+    data.push(blog);
   });
   return data;
+};
+
+export const getBlog = async (slug) => {
+  const blogRef = doc(db, `blogs/${slug}`);
+  const blog = await getDoc(blogRef);
+  return blog.exists() ? blog.data() : null;
 };
