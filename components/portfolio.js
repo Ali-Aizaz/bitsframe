@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { useEffect } from 'react';
 
 function Portfolio({ props }) {
   return (
