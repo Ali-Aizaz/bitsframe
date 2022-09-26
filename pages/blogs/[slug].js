@@ -19,7 +19,7 @@ const Blog = ({ blog }) => {
     <main className='flex justify-center'>
       <section className='lg:w-4/5 w-[95vw]'>
         <h1 className='text-5xl font-bold'>{blog.title}</h1>
-        <Image src={blog.image} alt={blog.title} width={400} height={400} />
+
         <article
           className='content'
           dangerouslySetInnerHTML={{ __html: text }}

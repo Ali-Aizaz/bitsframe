@@ -9,8 +9,8 @@ export async function getServerSideProps() {
 }
 
 const Blogs = ({ genres, blogs, lastBlog }) => {
-  const [selectedTab, setSelectedTab] = useState(genres[0]);
-  const [blogsList, setBlogsList] = useState(blogs);
+  const [selectedTab, setSelectedTab] = useState(genres[0] || []);
+  const [blogsList, setBlogsList] = useState(blogs || []);
   const [last, setLast] = useState(lastBlog);
   const [loading, setLoading] = useState(false);
   const handlePagination = async () => {
