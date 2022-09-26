@@ -15,10 +15,8 @@ export async function getServerSideProps() {
 }
 
 const Blogs = ({ genres, blogs, lastBlog }) => {
-  const [selectedTab, setSelectedTab] = useState(
-    genres[0] === undefined ? [] : genres[0]
-  );
-  const [blogsList, setBlogsList] = useState(blogs === undefined ? [] : blogs);
+  const [selectedTab, setSelectedTab] = useState(genres[0]);
+  const [blogsList, setBlogsList] = useState(blogs);
   const [last, setLast] = useState(lastBlog);
   const [loading, setLoading] = useState(false);
   const handlePagination = async () => {
@@ -37,7 +35,7 @@ const Blogs = ({ genres, blogs, lastBlog }) => {
         setBlogsList={setBlogsList}
         setLast={setLast}
       />
-      {blogsList.length === 0 ? (
+      {blogsList.length === 0 || blogsList === undefined ? (
         <h1 className='font-semibold text-sm uppercase'>
           THERE ARE NO BLOGS IN {selectedTab}
         </h1>

@@ -25,19 +25,20 @@ const Tabs = ({
   };
   return (
     <div className='tabs w-full px-10 py-4'>
-      {tabs.map((tab, idx) => {
-        return (
-          <a
-            key={idx}
-            onClick={() => handleGetBlogs(tab)}
-            className={`tab tab-lg tab-bordered ${
-              tab === selectedTab && 'tab-active'
-            }`}
-          >
-            {tab}
-          </a>
-        );
-      })}
+      {tabs !== undefined &&
+        tabs.map((tab, idx) => {
+          return (
+            <a
+              key={idx}
+              onClick={() => handleGetBlogs(tab)}
+              className={`tab tab-lg tab-bordered ${
+                tab === selectedTab && 'tab-active'
+              }`}
+            >
+              {tab}
+            </a>
+          );
+        })}
     </div>
   );
 };
