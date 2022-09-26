@@ -30,19 +30,25 @@ const Blogs = ({ genres, blogs, lastBlog }) => {
         setLast={setLast}
       />
       {blogsList.length === 0 ? (
-        <h1>There are no blog</h1>
+        <h1 className='font-semibold text-sm uppercase'>
+          THERE ARE NO BLOGS IN {selectedTab}
+        </h1>
       ) : (
         <section className='lg:w-4/5 justify-center flex flex-wrap '>
           {blogsList.map((blog, idx) => {
             return <Card key={idx} blog={blog} />;
           })}
-          {blogsList.length % 25 === 0 && (
+          {blogsList.length % 25 === 0 ? (
             <button
               className={`btn ${loading && 'loading'}`}
               onClick={handlePagination}
             >
               {loading ? 'Loading' : 'Get More'}
             </button>
+          ) : (
+            <h1 className='font-semibold text-sm uppercase'>
+              YOU ARE UPTO DATE IN {selectedTab}
+            </h1>
           )}
         </section>
       )}
