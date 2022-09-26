@@ -7,7 +7,7 @@ export async function getServerSideProps() {
   const { blogs, lastBlog } = await getBlogs(genres[0]);
   return {
     props: {
-      genres: genres === undefined ? [] : genres,
+      genres: genres === undefined ? [1] : genres,
       blogs: blogs === undefined ? [] : blogs,
       lastBlog,
     },
