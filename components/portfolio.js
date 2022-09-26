@@ -9,11 +9,13 @@ function Portfolio({ props }) {
       </h1>
       <br />
       <ul className='xl:w-3/5 lg:w-4/5 w-full space-y-20  m-auto flex flex-col items-center justify-center'>
-        {props.map((prop, i) => {
+        {props.map((prop, i, arr) => {
           return (
             <li
               key={i}
-              className='relative justify-evenly w-full top-20 border-b border-gray-300 flex md:flex-row flex-col items-center '
+              className={`relative justify-evenly w-full top-20 ${
+                i === arr.length - 1 ? '' : 'border-b'
+              }  border-gray-300 flex md:flex-row flex-col items-center `}
             >
               <Image src={prop.image} alt='name' width='400px' height='400px' />
               <div className='flex flex-col justify-center items-center'>

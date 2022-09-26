@@ -34,10 +34,13 @@ const Blogs = ({ genres, blogs, lastBlog }) => {
           THERE ARE NO BLOGS IN {selectedTab}
         </h1>
       ) : (
-        <section className='lg:w-4/5 justify-center flex flex-wrap '>
-          {blogsList.map((blog, idx) => {
-            return <Card key={idx} blog={blog} />;
-          })}
+        <section className='lg:w-4/5 justify-center  '>
+          <ul className='flex  flex-wrap'>
+            {blogsList.map((blog, idx) => {
+              return <Card key={idx} blog={blog} />;
+            })}
+          </ul>
+          <br />
           {blogsList.length % 25 === 0 ? (
             <button
               className={`btn ${loading && 'loading'}`}
@@ -46,7 +49,7 @@ const Blogs = ({ genres, blogs, lastBlog }) => {
               {loading ? 'Loading' : 'Get More'}
             </button>
           ) : (
-            <h1 className='font-semibold text-sm uppercase'>
+            <h1 className='text-center font-semibold text-sm uppercase'>
               YOU ARE UPTO DATE IN {selectedTab}
             </h1>
           )}

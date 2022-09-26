@@ -17,8 +17,11 @@ export const getPortfolio = async () => {
   let data = [];
   querySnapshot.forEach((doc) => {
     // doc.data() is never undefined for query doc snapshots
-    data.push(doc.data());
+    const port = doc.data();
+    delete port.createdAt;
+    data.push(port);
   });
+
   return data;
 };
 
@@ -41,6 +44,7 @@ export const getBlogs = async (genre) => {
   blogsSnap.forEach((doc) => {
     let blog = doc.data();
     blog['id'] = doc.id;
+    delete blog.createdAt;
     blogs.push(blog);
   });
   const lastBlog =
@@ -52,8 +56,10 @@ export const getBlogs = async (genre) => {
 
 export const getBlog = async (slug) => {
   const blogRef = doc(db, `blogs/${slug}`);
-  const blog = await getDoc(blogRef);
-  return blog.exists() ? blog.data() : null;
+  const data = await getDoc(blogRef);
+  const blog = data.data();
+  delete blog.createdAt;
+  return data.exists() ? blog : null;
 };
 
 export const getMoreBlogs = async (genre, last) => {
@@ -69,6 +75,7 @@ export const getMoreBlogs = async (genre, last) => {
   blogsSnap.forEach((doc) => {
     let blog = doc.data();
     blog['id'] = doc.id;
+    delete blog.createdAt;
     blogs.push(blog);
   });
   const lastBlog = blogsSnap.docs[blogsSnap.docs.length - 1];

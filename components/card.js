@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const Card = ({ blog }) => {
   return (
-    <div className='card w-96 glass m-5 transition-all hover:-translate-y-2 hover:scale-105 delay-50 ease-in-out duration-300'>
+    <div className='card w-96 glass m-5 transition-all hover:-translate-y-2 hover:shadow-md delay-50 ease-in-out duration-300'>
       <figure>
         <img src={blog.image} alt={blog.title} />
       </figure>
