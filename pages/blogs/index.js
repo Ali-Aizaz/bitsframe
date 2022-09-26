@@ -7,16 +7,18 @@ export async function getServerSideProps() {
   const { blogs, lastBlog } = await getBlogs(genres[0]);
   return {
     props: {
-      genres: genres === undefined ? [1] : genres,
-      blogs: blogs === undefined ? [] : blogs,
+      genres,
+      blogs,
       lastBlog,
     },
   };
 }
 
 const Blogs = ({ genres, blogs, lastBlog }) => {
-  const [selectedTab, setSelectedTab] = useState(genres[0]);
-  const [blogsList, setBlogsList] = useState(blogs);
+  const [selectedTab, setSelectedTab] = useState(
+    genres[0] === undefined ? [] : genres[0]
+  );
+  const [blogsList, setBlogsList] = useState(blogs === undefined ? [] : blogs);
   const [last, setLast] = useState(lastBlog);
   const [loading, setLoading] = useState(false);
   const handlePagination = async () => {
