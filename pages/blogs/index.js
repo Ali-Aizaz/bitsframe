@@ -5,12 +5,18 @@ import { useState } from 'react';
 export async function getServerSideProps() {
   const genres = Object.keys(await getGenres());
   const { blogs, lastBlog } = await getBlogs(genres[0]);
-  return { props: { genres, blogs, lastBlog } };
+  return {
+    props: {
+      genres: genres === undefined ? [] : genres,
+      blogs: blogs === undefined ? [] : blogs,
+      lastBlog,
+    },
+  };
 }
 
 const Blogs = ({ genres, blogs, lastBlog }) => {
-  const [selectedTab, setSelectedTab] = useState(genres[0] || []);
-  const [blogsList, setBlogsList] = useState(blogs || []);
+  const [selectedTab, setSelectedTab] = useState(genres[0]);
+  const [blogsList, setBlogsList] = useState(blogs);
   const [last, setLast] = useState(lastBlog);
   const [loading, setLoading] = useState(false);
   const handlePagination = async () => {
