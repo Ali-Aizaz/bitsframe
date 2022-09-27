@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { getBlog } from '../api/hello';
+import Head from 'next/head';
 export async function getServerSideProps(context) {
   const { slug } = context.params;
   const blog = await getBlog(slug);
@@ -16,16 +17,31 @@ const Blog = ({ blog }) => {
     getText();
   }, []);
   return (
-    <main className='flex justify-center'>
-      <section className='lg:w-4/5 w-[95vw]'>
-        <h1 className='text-5xl font-bold'>{blog.title}</h1>
+    <>
+      <Head>
+        <title>{blog.title}</title>
+        <meta
+          name='description'
+          content='Get your website developed by the best. High SEO ranking,
+       user friendly interface, mobile optimization, low prices and modern UI/UX design. Bitsframe We Develope'
+        />
+        <meta name='robots' content='index, follow, archive' />
+        <meta property='og:type' content='artical' />
+        <meta property='og:title' content={blog.title} />
+        <meta property='og:site_name' content='Bitsframe' />
+        <meta name='viewport' content='width=device-width,initial-scale=1.0' />
+      </Head>
+      <main className='flex justify-center'>
+        <section className='lg:w-4/5 w-[95vw]'>
+          <h1 className='text-5xl font-bold'>{blog.title}</h1>
 
-        <article
-          className='content'
-          dangerouslySetInnerHTML={{ __html: text }}
-        ></article>
-      </section>
-    </main>
+          <article
+            className='content'
+            dangerouslySetInnerHTML={{ __html: text }}
+          ></article>
+        </section>
+      </main>
+    </>
   );
 };
 

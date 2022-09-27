@@ -1,4 +1,4 @@
-import { getBlogs } from '../api/hello';
+import { getBlogs } from '../pages/api/hello';
 import { toast } from 'react-hot-toast';
 
 const Tabs = ({
