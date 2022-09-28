@@ -31,8 +31,8 @@ const Blog = ({ blog }) => {
         <meta property='og:site_name' content='Bitsframe' />
         <meta name='viewport' content='width=device-width,initial-scale=1.0' />
       </Head>
-      <main className='flex justify-center'>
-        <section className='lg:w-4/5 w-[95vw]'>
+      <main className='flex justify-center relative top-10'>
+        <section className='lg:w-4/5 flex items-center flex-col w-[95vw]'>
           <h1 className='text-5xl font-bold'>{blog.title}</h1>
 
           <article

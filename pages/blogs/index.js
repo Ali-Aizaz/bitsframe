@@ -1,30 +1,46 @@
 import Card from '../../components/card';
 import Tabs from '../../components/tabs';
 import Head from 'next/head';
-import { getBlogs, getGenres, getMoreBlogs } from '../api/hello';
+import {
+  getBlogs,
+  getGenres,
+  getMoreBlogs,
+  getNextPage,
+  getPrevPage,
+} from '../api/hello';
 import { useState } from 'react';
 export async function getServerSideProps() {
   const genres = Object.keys(await getGenres());
-  const { blogs, lastBlog } = await getBlogs(genres[0]);
+  const { blogs, pagination } = await getBlogs(genres[0]);
   return {
     props: {
       genres,
       blogs,
-      lastBlog,
+      pagination,
     },
   };
 }
 
-const Blogs = ({ genres, blogs, lastBlog }) => {
+const Blogs = ({ genres, blogs, pagination }) => {
   const [selectedTab, setSelectedTab] = useState(genres[0]);
   const [blogsList, setBlogsList] = useState(blogs);
-  const [last, setLast] = useState(lastBlog);
+  const [pag, setPag] = useState(pagination);
   const [loading, setLoading] = useState(false);
-  const handlePagination = async () => {
+  const [page, setPage] = useState(1);
+  const handleNextPage = async () => {
     setLoading(true);
-    const { blogs, lastBlog } = await getMoreBlogs(selectedTab, last);
-    setLast(lastBlog);
-    setBlogsList((blogsList) => [...blogsList, ...blogs]);
+    const { blogs, pagination } = await getNextPage(selectedTab, pag.last);
+    setPag(pagination);
+    setBlogsList(blogs);
+    setPage((page) => page + 1);
+    setLoading(false);
+  };
+  const handlePrevPage = async () => {
+    setLoading(true);
+    const { blogs, pagination } = await getPrevPage(selectedTab, pag.first);
+    setPag(pagination);
+    setBlogsList(blogs);
+    setPage((page) => page - 1);
     setLoading(false);
   };
   return (
@@ -45,13 +61,14 @@ const Blogs = ({ genres, blogs, lastBlog }) => {
         <meta property='og:site_name' content='Bitsframe' />
         <meta name='viewport' content='width=device-width,initial-scale=1.0' />
       </Head>
-      <main className='flex flex-col items-center space-y-10'>
+      <main className='flex flex-col items-center space-y-10 '>
         <Tabs
           genres={genres}
           selectedTab={selectedTab}
           setSelectedTab={setSelectedTab}
           setBlogsList={setBlogsList}
-          setLast={setLast}
+          setPag={setPag}
+          setPage={setPage}
         />
         {blogsList.length === 0 || blogsList === undefined ? (
           <h1 className='font-semibold text-sm uppercase'>
@@ -65,17 +82,26 @@ const Blogs = ({ genres, blogs, lastBlog }) => {
               })}
             </ul>
             <br />
-            {blogsList.length % 25 === 0 ? (
-              <button
-                className={`btn ${loading && 'loading'}`}
-                onClick={handlePagination}
-              >
-                {loading ? 'Loading' : 'Get More'}
-              </button>
+
+            {loading ? (
+              <button className='btn loading' />
             ) : (
-              <h1 className='text-center font-semibold text-sm uppercase'>
-                YOU ARE UPTO DATE IN {selectedTab}
-              </h1>
+              <div className='btn-group flex justify-center'>
+                <button
+                  disabled={blogsList.length % 25 > 0}
+                  onClick={handlePrevPage}
+                  className={'btn w-32 '}
+                >
+                  Previous page
+                </button>
+                <button
+                  disabled={page === 1}
+                  onClick={handleNextPage}
+                  className={'btn w-32 '}
+                >
+                  Next
+                </button>
+              </div>
             )}
           </section>
         )}

@@ -9,6 +9,7 @@ import {
   limit,
   orderBy,
   startAfter,
+  endBefore,
 } from 'firebase/firestore';
 
 export const getPortfolio = async () => {
@@ -51,7 +52,8 @@ export const getBlogs = async (genre) => {
     blogsSnap.docs[blogsSnap.docs.length - 1] === undefined
       ? null
       : blogsSnap.docs[blogsSnap.docs.length - 1];
-  return { blogs, lastBlog };
+  const firstBlog = blogsSnap.docs[0] === undefined ? null : blogsSnap.docs[0];
+  return { blogs, pagination: { first: firstBlog, last: lastBlog } };
 };
 
 export const getBlog = async (slug) => {
@@ -78,6 +80,58 @@ export const getMoreBlogs = async (genre, last) => {
     delete blog.createdAt;
     blogs.push(blog);
   });
-  const lastBlog = blogsSnap.docs[blogsSnap.docs.length - 1];
-  return { blogs, lastBlog };
+  const lastBlog =
+    blogsSnap.docs[blogsSnap.docs.length - 1] === undefined
+      ? null
+      : blogsSnap.docs[blogsSnap.docs.length - 1];
+  const firstBlog = blogsSnap.docs[0] === undefined ? null : blogsSnap.docs[0];
+  return { blogs, pagination: { first: firstBlog, last: lastBlog } };
+};
+
+export const getNextPage = async (genre, last) => {
+  const blogsQueryRef = query(
+    collection(db, 'blogs'),
+    where('genres', 'array-contains', genre),
+    orderBy('createdAt'),
+    startAfter(last),
+    limit(25)
+  );
+  const blogsSnap = await getDocs(blogsQueryRef);
+  let blogs = [];
+  blogsSnap.forEach((doc) => {
+    let blog = doc.data();
+    blog['id'] = doc.id;
+    delete blog.createdAt;
+    blogs.push(blog);
+  });
+  const lastBlog =
+    blogsSnap.docs[blogsSnap.docs.length - 1] === undefined
+      ? null
+      : blogsSnap.docs[blogsSnap.docs.length - 1];
+  const firstBlog = blogsSnap.docs[0] === undefined ? null : blogsSnap.docs[0];
+  return { blogs, pagination: { first: firstBlog, last: lastBlog } };
+};
+
+export const getPrevPage = async (genre, first) => {
+  const blogsQueryRef = query(
+    collection(db, 'blogs'),
+    where('genres', 'array-contains', genre),
+    orderBy('createdAt'),
+    endBefore(first),
+    limit(25)
+  );
+  const blogsSnap = await getDocs(blogsQueryRef);
+  let blogs = [];
+  blogsSnap.forEach((doc) => {
+    let blog = doc.data();
+    blog['id'] = doc.id;
+    delete blog.createdAt;
+    blogs.push(blog);
+  });
+  const lastBlog =
+    blogsSnap.docs[blogsSnap.docs.length - 1] === undefined
+      ? null
+      : blogsSnap.docs[blogsSnap.docs.length - 1];
+  const firstBlog = blogsSnap.docs[0] === undefined ? null : blogsSnap.docs[0];
+  return { blogs, pagination: { first: firstBlog, last: lastBlog } };
 };

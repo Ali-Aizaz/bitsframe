@@ -6,7 +6,8 @@ const Tabs = ({
   selectedTab,
   setSelectedTab,
   setBlogsList,
-  setLast,
+  setPag,
+  setPage,
 }) => {
   const tabs = genres;
 
@@ -20,19 +21,20 @@ const Tabs = ({
         error: 'Error',
       });
       setBlogsList((await data).blogs);
-      setLast((await data).lastBlog);
+      setPag((await data).pagination);
+      setPage(1);
     }
   };
   return (
-    <div className='tabs w-full px-10 py-4'>
+    <div className='tabs w-full flex justify-center px-10 py-4'>
       {tabs !== undefined &&
         tabs.map((tab, idx) => {
           return (
             <a
               key={idx}
               onClick={() => handleGetBlogs(tab)}
-              className={`tab tab-lg tab-bordered ${
-                tab === selectedTab && 'tab-active'
+              className={`tab tab-lg text-2xl  ${
+                tab === selectedTab && 'tab-active text-[#1F51FF] font-semibold'
               }`}
             >
               {tab}

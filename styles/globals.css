@@ -5,4 +5,5 @@
 :root {
   scroll-behavior: smooth;
   --swiper-theme-color: #000000 !important;
+  background-color: rgb(226 232 240);
 }
