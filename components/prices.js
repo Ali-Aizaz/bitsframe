@@ -1,4 +1,4 @@
-import Link from 'next/link';
+// import Link from 'next/link';
 
 const Price = () => {
   return (
@@ -15,22 +15,22 @@ const Price = () => {
           <h2 className='text-md  text-center py-4 font-bold text-gray-600 w-full rounded-t-xl'>
             BASIC
           </h2>
-          <ul className='text-center space-y-4 text-gray-600 relative top-7'>
+          <ul className='text-center flex flex-col items-center justify-center h-full space-y-4 text-gray-600 relative text-lg'>
             <li>Website Audit</li>
             <li>Design</li>
             <li>Development</li>
           </ul>
-          <Link href={'#mail'}>
+          {/* <Link href={'#mail'}>
             <div className='cursor-pointer text-center px-2 relative py-3 text-black top-16 rounded-full w-[140px] transition-all hover:text-white  hover:bg-black border border-black ease-in-out duration-300 bg-white'>
               Request quote
             </div>
-          </Link>
+          </Link> */}
         </div>
         <div className='w-[330px] h-[500px] mt-20 mx-5 rounded-xl shadow-xl items-center flex flex-col bg-white transition-all hover:-translate-y-2 ease-in-out duration-500'>
           <h2 className='text-md text-center py-4 font-bold text-white bg-blue-400 w-full rounded-t-xl'>
             STANDARD
           </h2>
-          <ul className='text-center space-y-4 text-gray-600 relative top-7'>
+          <ul className='text-center flex flex-col items-center justify-center h-full space-y-4 text-gray-600 relative text-lg'>
             <li>Website Audit</li>
             <li>Design</li>
             <li>Development</li>
@@ -40,17 +40,17 @@ const Price = () => {
             <li>Search Engine Optimization</li>
             <li>Content Management</li>
           </ul>
-          <Link href={'#mail'}>
+          {/* <Link href={'#mail'}>
             <div className='cursor-pointer text-center px-2 relative py-3 text-black top-16 rounded-full w-[140px] transition-all hover:text-white  hover:bg-blue-400 border border-black hover:border-blue-400 ease-in-out duration-300 bg-white'>
               Request quote
             </div>
-          </Link>
+          </Link> */}
         </div>
         <div className='w-[330px] mb-10 h-[660px] mt-20 mx-5 rounded-xl shadow-xl items-center flex flex-col bg-white transition-all hover:-translate-y-2 ease-in-out duration-500'>
           <h2 className='text-md text-center py-4 font-bold text-white bg-amber-400 w-full rounded-t-xl'>
             PREMIUM
           </h2>
-          <ul className='text-center space-y-4 text-gray-600 relative top-7'>
+          <ul className='text-center flex flex-col items-center justify-center h-full space-y-4 text-gray-600 relative text-lg'>
             <li>Website Audit</li>
             <li>Design</li>
             <li>Development</li>
@@ -64,11 +64,11 @@ const Price = () => {
             <li>Email Setup</li>
             <li>Hosting</li>
           </ul>
-          <Link href={'#mail'}>
+          {/* <Link href={'#mail'}>
             <div className='cursor-pointer text-center px-2 relative py-3 text-black top-16 rounded-full w-[140px] transition-all hover:text-white  hover:bg-amber-400 border border-black hover:border-amber-400 ease-in-out duration-300 bg-white'>
               Request quote
             </div>
-          </Link>
+          </Link> */}
         </div>
       </div>
     </section>

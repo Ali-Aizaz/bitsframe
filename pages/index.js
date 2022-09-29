@@ -32,7 +32,7 @@ export default function Home({ data }) {
         <Services />
         <Portfolio props={data} />
         <Price />
-        <Mail />
+        {/* <Mail /> */}
       </main>
     </>
   );

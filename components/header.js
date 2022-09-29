@@ -6,7 +6,15 @@ export default function Header() {
   return (
     <>
       <header className='px-10 py-5 w-[95vw] m-auto rounded-xl font-semibold z-50 text-black shadow-md sticky backdrop-blur-md top-3 bg-white/70 flex justify-between'>
-        <Image src={'/logo.png'} alt={'logo'} width={200} height={40} />
+        <Link href={'/'}>
+          <Image
+            src={'/logo.png'}
+            alt={'logo'}
+            width={200}
+            height={40}
+            className='cursor-pointer'
+          />
+        </Link>
         <ul className='md:flex hidden items-center space-x-10'>
           <li>
             <Link href={'#services'}>SERVICES</Link>
