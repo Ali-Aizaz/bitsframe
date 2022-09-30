@@ -4,7 +4,7 @@ import Head from 'next/head';
 import Sidebar from '../../components/sidebar';
 import { getBlogs, getGenres, getNextPage, getPrevPage } from '../api/hello';
 import { useState } from 'react';
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const genres = Object.keys(await getGenres());
   const { blogs, pagination } = await getBlogs('Education');
   return {
@@ -13,6 +13,7 @@ export async function getServerSideProps() {
       blogs,
       pagination: JSON.stringify(pagination),
     },
+    revalidate: 86400,
   };
 }
 

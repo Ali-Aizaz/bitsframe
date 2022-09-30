@@ -6,9 +6,9 @@ import Mail from '../components/mail';
 import { getPortfolio } from './api/hello';
 import Head from 'next/head';
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const data = await getPortfolio();
-  return { props: { data } };
+  return { props: { data }, revalidate: 86400 };
 }
 
 export default function Home({ data }) {
