@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <Toaster containerClassName='z-50' />
       <Header />
-      <Sidebar />
+      {/* <Sidebar /> */}
       <ContactUs />
       <Component {...pageProps} />
       <Footer />

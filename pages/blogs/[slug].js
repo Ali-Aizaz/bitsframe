@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
+import Sidebar from '../../components/sidebar';
 import { getBlog } from '../api/hello';
 import Head from 'next/head';
 export async function getServerSideProps(context) {
@@ -18,6 +18,7 @@ const Blog = ({ blog }) => {
   }, []);
   return (
     <>
+      <Sidebar />
       <Head>
         <title>{blog.title}</title>
         <meta
@@ -31,12 +32,12 @@ const Blog = ({ blog }) => {
         <meta property='og:site_name' content='Bitsframe' />
         <meta name='viewport' content='width=device-width,initial-scale=1.0' />
       </Head>
-      <main className='flex justify-center relative top-10'>
-        <section className='lg:w-4/5 flex items-center flex-col w-[95vw]'>
+      <main className='flex justify-center relative top-10 min-h-[70vh]'>
+        <section className='lg:w-4/5 flex items-center flex-col w-[95vw] space-y-10'>
           <h1 className='text-5xl font-bold'>{blog.title}</h1>
 
           <article
-            className='content'
+            className='content text-gray-700'
             dangerouslySetInnerHTML={{ __html: text }}
           ></article>
         </section>

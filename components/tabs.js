@@ -34,7 +34,8 @@ const Tabs = ({
               key={idx}
               onClick={() => handleGetBlogs(tab)}
               className={`tab tab-lg text-2xl  ${
-                tab === selectedTab && 'tab-active text-[#1F51FF] font-semibold'
+                tab === selectedTab &&
+                'tab-active text-stone-600 [#1F51FF] font-semibold'
               }`}
             >
               {tab}

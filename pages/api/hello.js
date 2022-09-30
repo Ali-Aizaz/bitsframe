@@ -11,6 +11,8 @@ import {
   startAfter,
   endBefore,
   addDoc,
+  Timestamp,
+  limitToLast,
 } from 'firebase/firestore';
 
 export const getPortfolio = async () => {
@@ -71,7 +73,7 @@ export const getPrevPage = async (genre, first) => {
     where('genres', 'array-contains', genre),
     orderBy('createdAt'),
     endBefore(first),
-    limit(25)
+    limitToLast(25)
   );
   const blogsSnap = await getDocs(blogsQueryRef);
   return blogToArray(blogsSnap);
@@ -88,12 +90,16 @@ const blogToArray = (blogsSnap) => {
   const lastBlog =
     blogsSnap.docs[blogsSnap.docs.length - 1] === undefined
       ? null
-      : blogsSnap.docs[blogsSnap.docs.length - 1];
-  const firstBlog = blogsSnap.docs[0] === undefined ? null : blogsSnap.docs[0];
+      : blogsSnap.docs[blogsSnap.docs.length - 1].data().createdAt.valueOf();
+  const firstBlog =
+    blogsSnap.docs[0] === undefined
+      ? null
+      : blogsSnap.docs[0].data().createdAt.valueOf();
   return { blogs, pagination: { first: firstBlog, last: lastBlog } };
 };
 
 export const sendMessage = async (message) => {
   const messageRef = collection(db, 'messages');
+  message['createdAt'] = Timestamp.now();
   return await addDoc(messageRef, message);
 };
