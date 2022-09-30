@@ -26,6 +26,7 @@ export default function Home({ data }) {
         <meta property='og:title' content='Bitsframe We Develope || Homepage' />
         <meta property='og:site_name' content='Bitsframe' />
         <meta name='viewport' content='width=device-width,initial-scale=1.0' />
+        <link rel='icon' href='/logo.png' />
       </Head>
       <main>
         <Cover />

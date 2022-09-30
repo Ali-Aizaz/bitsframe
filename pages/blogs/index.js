@@ -45,6 +45,7 @@ const Blogs = ({ genres, blogs, pagination }) => {
       <Sidebar />
       <Head>
         <title>Bitsframe Blogs || {selectedTab} Articals</title>
+        <link rel='icon' href='/logo.png' />
         <meta
           name='description'
           content='Get your website developed by the best. High SEO ranking,

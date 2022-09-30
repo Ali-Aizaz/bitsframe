@@ -26,6 +26,7 @@ const Blog = ({ blog }) => {
           content='Get your website developed by the best. High SEO ranking,
        user friendly interface, mobile optimization, low prices and modern UI/UX design. Bitsframe We Develope'
         />
+        <link rel='icon' href='/logo.png' />
         <meta name='robots' content='index, follow, archive' />
         <meta property='og:type' content='artical' />
         <meta property='og:title' content={blog.title} />
