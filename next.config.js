@@ -13,6 +13,10 @@ const nextConfig = {
     MESSAGE_SENDER_ID: '713932777008',
     APP_ID: '1:713932777008:web:be7ca770b5448355f52ff5',
   },
+  images: {
+    loader: 'akamai',
+    path: '',
+  },
 };
 
 module.exports = nextConfig;
