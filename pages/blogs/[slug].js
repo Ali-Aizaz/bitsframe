@@ -2,7 +2,22 @@ import { useEffect, useState } from 'react';
 import Sidebar from '../../components/sidebar';
 import { getBlog } from '../api/hello';
 import Head from 'next/head';
-export async function getServerSideProps(context) {
+
+export async function getStaticPaths() {
+  const response = await fetch('http://localhost:3000/api/get-blog-ids');
+  const data = await response.json();
+  const slugs = data.map((id) => {
+    return { params: { slug: id } };
+  });
+  console.log(slugs);
+  return {
+    paths: slugs,
+
+    fallback: false,
+  };
+}
+
+export async function getStaticProps(context) {
   const { slug } = context.params;
   const blog = await getBlog(slug);
   return { props: { blog } };
@@ -21,11 +36,7 @@ const Blog = ({ blog }) => {
       <Sidebar />
       <Head>
         <title>{blog.title}</title>
-        <meta
-          name='description'
-          content='Get your website developed by the best. High SEO ranking,
-       user friendly interface, mobile optimization, low prices and modern UI/UX design. Bitsframe We Develope'
-        />
+        <meta name='description' content={blog.description} />
         <link rel='icon' href='/logo.png' />
         <meta name='robots' content='index, follow, archive' />
         <meta property='og:type' content='artical' />

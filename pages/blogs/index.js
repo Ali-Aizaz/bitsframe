@@ -18,7 +18,6 @@ export async function getStaticProps() {
 }
 
 const Blogs = ({ genres, blogs, pagination }) => {
-  console.log(pagination);
   const [selectedTab, setSelectedTab] = useState(genres[0]);
   const [blogsList, setBlogsList] = useState(blogs);
   const [pag, setPag] = useState(pagination);

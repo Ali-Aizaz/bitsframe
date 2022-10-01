@@ -2,7 +2,7 @@ import Cover from '../components/cover';
 import Services from '../components/services';
 import Portfolio from '../components/portfolio';
 import Price from '../components/prices';
-import Mail from '../components/mail';
+// import Mail from '../components/mail';
 import { getPortfolio } from './api/hello';
 import Head from 'next/head';
 
