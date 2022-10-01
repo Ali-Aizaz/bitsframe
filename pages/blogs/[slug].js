@@ -12,15 +12,14 @@ export async function getStaticPaths() {
   console.log(slugs);
   return {
     paths: slugs,
-
-    fallback: false,
+    fallback: true,
   };
 }
 
 export async function getStaticProps(context) {
   const { slug } = context.params;
   const blog = await getBlog(slug);
-  return { props: { blog } };
+  return { props: { blog }, revalidate: 86400 };
 }
 
 const Blog = ({ blog }) => {
