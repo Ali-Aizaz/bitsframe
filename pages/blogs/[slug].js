@@ -33,12 +33,12 @@ const Blog = ({ blog }) => {
   const router = useRouter();
   if (router.isFallback)
     return (
-      <div class='w-[100vw] h-[100vh] flex justify-center items-center'>
+      <div className='w-[100vw] h-[100vh] flex justify-center items-center'>
         <div
-          class='spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full'
+          className='spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full'
           role='status'
         >
-          <span class='visually-hidden'>Loading...</span>
+          <span className='visually-hidden'>Loading...</span>
         </div>
       </div>
     );
