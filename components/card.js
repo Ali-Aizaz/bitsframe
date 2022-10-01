@@ -1,11 +1,11 @@
 import Link from 'next/link';
-
+import Image from 'next/image';
 const Card = ({ blog }) => {
   console.log(blog.id);
   return (
     <div className='card sm:w-96 w-80 glass bg-white/60 m-5 transition-all hover:-translate-y-2 hover:shadow-md delay-50 ease-in-out duration-300'>
       <figure>
-        <img src={blog.image} alt={blog.title} />
+        <Image src={blog.image} alt={blog.title} width='500' height='281' />
       </figure>
       <div className='card-body'>
         <p className='text-sm font-semibold text-slate-800'>{blog.createdAt}</p>
