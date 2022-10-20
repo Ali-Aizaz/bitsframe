@@ -19,8 +19,14 @@ export default function Home({ data }) {
         <meta
           name='description'
           content='Get your website developed by the best. High SEO ranking,
-       user friendly interface, mobile optimization, low prices and modern UI/UX design. Bitsframe We Develope'
+          user friendly interface, mobile optimization, low prices and modern UI/UX design. Bitsframe We Develope'
         />
+        <meta
+          name='Homepage'
+          content='initial-scale=1.0, width=device-width'
+          key='Homepage'
+        />
+        <meta property='og:type' content='website' />
         <meta name='robots' content='index, follow, archive' />
         <meta property='og:type' content='artical' />
         <meta property='og:title' content='Bitsframe We Develope || Homepage' />
