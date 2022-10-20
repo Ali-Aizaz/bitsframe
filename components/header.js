@@ -1,8 +1,10 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 export default function Header() {
   const [dropDown, setDropDown] = useState(false);
+  const router = useRouter();
   return (
     <>
       <header className='px-10 py-5 w-[95vw] m-auto rounded-xl font-semibold z-50 text-black shadow-md sticky backdrop-blur-md top-3 bg-white/70 flex justify-between'>
@@ -16,15 +18,24 @@ export default function Header() {
           />
         </Link>
         <ul className='md:flex hidden items-center space-x-10'>
-          <li>
-            <Link href={'#services'}>SERVICES</Link>
-          </li>
-          <li>
-            <Link href={'#portfolio'}>PORTFOLIO</Link>
-          </li>
-          <li>
-            <Link href={'#prices'}>PRICING</Link>
-          </li>
+          {router.pathname === '/' ? (
+            <>
+              <li>
+                <Link href={'#services'}>SERVICES</Link>
+              </li>
+              <li>
+                <Link href={'#portfolio'}>PORTFOLIO</Link>
+              </li>
+              <li>
+                <Link href={'#prices'}>PRICING</Link>
+              </li>
+            </>
+          ) : (
+            <li>
+              <Link href={'/'}>HOME</Link>
+            </li>
+          )}
+
           <li>
             <Link href={'/blogs'}>BLOGS</Link>
           </li>
@@ -49,17 +60,25 @@ export default function Header() {
           dropDown ? 'flex flex-col h-[180px] py-2 border' : 'h-0'
         }`}
       >
+        {router.pathname === '/' ? (
+          <>
+            <li>
+              <Link href={'#services'}>SERVICES</Link>
+            </li>
+            <li>
+              <Link href={'#portfolio'}>PORTFOLIO</Link>
+            </li>
+            <li>
+              <Link href={'#prices'}>PRICING</Link>
+            </li>
+          </>
+        ) : (
+          <li>
+            <Link href={'/'}>HOME</Link>
+          </li>
+        )}
         <li>
           <Link href={'/blogs'}>BLOGS</Link>
-        </li>
-        <li>
-          <Link href={'#services'}>SERVICES</Link>
-        </li>
-        <li>
-          <Link href={'#portfolio'}>PORTFOLIO</Link>
-        </li>
-        <li>
-          <Link href={'#prices'}>PRICING</Link>
         </li>
       </ul>
     </>
