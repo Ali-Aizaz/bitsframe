@@ -45,7 +45,10 @@ const content = [
 
 const Services = () => {
   return (
-    <section id='services' className='w-11/12 m-auto'>
+    <section
+      id='services'
+      className='w-11/12 h-[300px] relative -top-16 m-auto'
+    >
       <Swiper
         slidesPerView={'auto'}
         spaceBetween={30}

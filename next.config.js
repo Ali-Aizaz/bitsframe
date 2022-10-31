@@ -4,6 +4,8 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: ['firebasestorage.googleapis.com', 'placeimg.com'],
+    loader: 'akamai',
+    path: '',
   },
   env: {
     API_KEY: 'AIzaSyB7R5qJTte5p0ovVfyQ0CtPSSSdezS4hvw',
@@ -12,10 +14,6 @@ const nextConfig = {
     STORAGE_BUCKET: 'bitsrame.appspot.com',
     MESSAGE_SENDER_ID: '713932777008',
     APP_ID: '1:713932777008:web:be7ca770b5448355f52ff5',
-  },
-  images: {
-    loader: 'akamai',
-    path: '',
   },
 };
 
